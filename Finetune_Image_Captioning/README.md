@@ -49,9 +49,8 @@ Finetue Image Captioning/
 
 +-- assets/                            # Images and diagrams
 ¦   +-- loss_vs_epoch.png              # Plots training loss and validation loss for each epoch.
-¦   +-- bertscore.png
+¦   +-- bertscore.png                  # Comparision of BERT Score Before vs After Training
 ¦   +-- results_before_training.csv    # Contains the generated caption, actual caption and their BERT score for images from the test set, prior to finetuning
-
 ¦   +-- results_after_training.csv     # Contains the generated caption, actual caption and their BERT score for images from the test set, post finetuning 
 
 +-- finetune_image_captioning.ipynb    # Jupyter notebook to finetune a VL model for image captioning.
