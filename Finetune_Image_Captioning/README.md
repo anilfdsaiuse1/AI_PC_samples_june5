@@ -41,22 +41,23 @@ The [Hephaestus dataset](https://github.com/Orion-AI-Lab/Hephaestus) is a large-
     
 This sample directory contains:
 
-| **Notebook**                            | **Description**                                                                                   |
-|:----------------------------------------|:--------------------------------------------------------------------------------------------------|
-| [finetune_image_captioning.ipynb](./finetune_image_captioning.ipynb) | The python script to finetune a VL model for image captioning.       |
+```
+Finetue Image Captioning/
++-- Hephaestus_dataset                
+¦   +-- images.zip                     # Contains the 1374 images for finetuning
+¦   +-- annotations.zip                # Each annotations files contains the details about their respective image including their captioning. 
 
-| **Assets :Input Dataset**     | **Description**                                                                                   |
-|:----------------------------------------|:--------------------------------------------------------------------------------------------------|
-| [images.zip](./Hephaestus_dataset/images.zip)     | Contains the 1374 images for the finetuning.                                          |
-| [annotations.zip](./Hephaestus_dataset/annotations.zip)       | Each annotation files contains the details about their respective image including their caption.       |
++-- assets/                            # Images and diagrams
+¦   +-- loss_vs_epoch.png              # Plots training loss and validation loss for each epoch.
+¦   +-- bertscore.png                  # Comparision of BERT Score Before vs After Training
+¦   +-- results_before_training.csv    # Contains the generated caption, actual caption and their BERT score for images from the test set, prior to finetuning
+¦   +-- results_after_training.csv     # Contains the generated caption, actual caption and their BERT score for images from the test set, post finetuning 
 
-| **Assets :Outputs example**             | **Description**                                                                                   |
-|:----------------------------------------|:--------------------------------------------------------------------------------------------------|
-| [loss_vs_epoch.png](./assets/loss_vs_epoch.png) | Plots training loss and validation loss for each epoch.                                   |
-| [bertscore.png](./assets/bertscore.png)   | Plots the BERT score for the test set before and after finetuning                               |
-| [results_before_training.csv](./assets/results_before_training.csv)   | Contains the generated caption, actual caption and their BERT score for images from the test set, prior to finetuning |
-| [results_after_training.csv](./assets/results_after_training.csv)   | Contains the generated caption, actual caption and their BERT score for images from the test set, post finetuning |
++-- finetune_image_captioning.ipynb    # Jupyter notebook to finetune a VL model for image captioning.
 
++-- README.md
++-- pyproject.toml
+```
 
 
 ## Run the `Finetune Image Captioning` Sample:
@@ -69,8 +70,19 @@ The sample uses [uv](https://docs.astral.sh/uv/) for environment management. Ste
    ```bash
    cd <path/to/Finetune-Image-Captioning/folder>
    ```
+   > NOTE: On Ubuntu, Install git-lfs before cloning the repository using the below commands:
+   >
+   > ```bash 
+   > sudo apt-get install git-lfs
+   > ```
+   > ```bash
+   > git lfs install
+   > ```
+   >```bash
+   > git lfs track "*.zip"
+   > ```
    
-2. Launch Jupyter Notebook
+3. Launch Jupyter Notebook
 
    ```bash
    uv run jupyter-lab
@@ -94,6 +106,18 @@ Users would be observing the below shown output by executing the cell for traini
 
 Users would be observing GPU utilization as this sample runs is optimized to run on Intel XPUs
 <img alt="image" width=600 src="./assets/gpu_usage_xpu.png"/>
+
+## Troubleshooting
+- If you encounter incorrect path error while unzipping the `images.zip` and `annotations.zip` on Ubuntu, install git lfs using the below commands before cloning the repository:
+```bash
+sudo apt-get install git-lfs
+```
+```bash
+git lfs install
+```
+```bash
+git lfs track "*.zip"
+```
 
 ## License
 
