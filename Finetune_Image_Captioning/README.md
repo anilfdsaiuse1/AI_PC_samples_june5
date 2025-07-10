@@ -1,8 +1,7 @@
 # Finetuning Image Caption Generation model using PyTorch XPU Backend
 
 ## Overview
-
-Image caption generation is a crucial task in computer vision and natural language processing, enabling automatic description of visual content. This sample focuses on fine-tuning the VL model [BLIP*large*](https://huggingface.co/Salesforce/blip-image-captioning-large) using **Hephaestus dataset**, leveraging the Intel XPUs using **PyTorch XPU** backend for optimized performance.
+Fine-tuning plays a pivotal role in improving model performance, especially for specialized tasks like image caption generation. In this example, we focus on fine-tuning the VL model [BLIP*large*](https://huggingface.co/Salesforce/blip-image-captioning-large) specifically for the **Hephaestus dataset**. By leveraging **PyTorch XPU** backend and **Intel XPUs**, this approach optimizes the fine-tuning process, allowing for enhanced performance and better adaptation to the dataset. Fine-tuning not only tailors the model to the specific task but also maximizes the efficiency and accuracy of the caption generation process, ensuring high-quality results from visual content.
 
 ## Contents
 
@@ -22,7 +21,7 @@ Image caption generation is a crucial task in computer vision and natural langua
 
 ## Dataset
 
-The [Hephaestus dataset](https://github.com/Orion-AI-Lab/Hephaestus) is a large-scale multitask dataset designed to enhance the understanding of Interferometric Synthetic Aperture Radar (InSAR) data. This code sample leverages the data used in [Hephaestus: A large scale multitask dataset towards InSAR understanding](https://openaccess.thecvf.com/content/CVPR2022W/EarthVision/papers/Bountos_Hephaestus_A_Large_Scale_Multitask_Dataset_Towards_InSAR_Understanding_CVPRW_2022_paper.pdf) as published in CVPR 2022 workshop Earthvision. The dataset was created to address various computer vision problems related to geophysical processes and geology, particularly focusing on volcanoes. Out of a total of 19,919 InSAR images, we selected 1,374 images with unique captions for the fine-tuning task.
+The [Hephaestus dataset](https://github.com/Orion-AI-Lab/Hephaestus) is a large-scale multitask dataset designed to enhance the understanding of Interferometric Synthetic Aperture Radar (InSAR) data. This code sample leverages the data used in [Hephaestus: A large scale multitask dataset towards InSAR understanding](https://openaccess.thecvf.com/content/CVPR2022W/EarthVision/papers/Bountos_Hephaestus_A_Large_Scale_Multitask_Dataset_Towards_InSAR_Understanding_CVPRW_2022_paper.pdf) as published in CVPR 2022 workshop Earthvision. The dataset was created to address various computer vision problems related to geophysical processes and geology, particularly focusing on volcanoes. From the full collection of 19,919 InSAR images, we selected 1,374 images that each have unique captions, specifically for the fine-tuning task.
 
 ## Pre-requisites
 
@@ -65,8 +64,19 @@ Finetue Image Captioning/
 ### Using `uv`
 
 The sample uses [uv](https://docs.astral.sh/uv/) for environment management. Steps to install `uv` can be found [here](https://docs.astral.sh/uv/getting-started/installation/). 
-    
-1. In a terminal, navigate to `Finetune-Image-Captioning` folder:
+
+1. Log in to Hugging Face, generate a token, and download the required model:\
+   `huggingface-cli` lets you interact directly with the Hugging Face Hub from a terminal. Log in to [Huggingface](https://huggingface.co/) with your credentials. You need a [User Access Token](https://huggingface.co/docs/hub/security-tokens) from your [Settings page](https://huggingface.co/settings/tokens). The User Access Token is used to authenticate your identity to the Hub.\
+   Once you have your token, run the following command in your terminal.
+   ```
+   uv run huggingface-cli login
+   ```
+   This command will prompt you for a token. Copy-paste yours and press Enter.
+   ```
+   uv run huggingface-cli download Salesforce/blip-image-captioning-large
+   ```
+
+2. In a terminal, navigate to `Finetune-Image-Captioning` folder:
    ```bash
    cd <path/to/Finetune-Image-Captioning/folder>
    ```
@@ -81,7 +91,7 @@ The sample uses [uv](https://docs.astral.sh/uv/) for environment management. Ste
    >```bash
    > git lfs track "*.zip"
    > ```
-   
+  
 3. Launch Jupyter Notebook
 
    ```bash
